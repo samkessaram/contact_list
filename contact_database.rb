@@ -7,7 +7,7 @@ class ContactDatabase
     database = file.read
   end
 
-  def add(contact)
+  def self.add(contact)
     file = File.open("contacts.csv", "a")
     file.puts contact
     file.close

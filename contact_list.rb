@@ -13,7 +13,27 @@ def main_menu
       puts "list - List all contacts"
       puts "show - Show a contact"
       puts "find - Find a contact" 
+      input2 = gets.chomp
+      if input2 == "new"
+        new_contact
+      end 
   end
 end
+
+def new_contact
+  contact = get_info
+  Contact.create(contact[0],contact[1])
+end
+
+def get_info
+  contact = []
+  puts "enter name"
+  name = gets.chomp
+  contact << name
+  puts "enter email"
+  email = gets.chomp
+  contact << email
+end
+
 
 main_menu
