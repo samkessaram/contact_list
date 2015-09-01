@@ -15,9 +15,13 @@ class Contact
   class << self
     def create(name, email)
       # TODO: Will initialize a contact as well as add it to the list of contacts
-      new_contact = Contact.new(name, email)
-      contact = "#{name}, #{email}"
-      ContactDatabase.add(contact)
+      contact = Contact.new(name, email)
+      puts "1*"+contact.name
+      index = ContactDatabase.last + 1
+      new_entry = "#{name} (#{email})"
+      puts "ID: #{index}"
+      ContactDatabase.add(new_entry)
+
     end
  
     def find(term)
@@ -31,17 +35,17 @@ class Contact
  
     def all
       # TODO: Return the list of contacts, as is
-      return contact_list
+      # return contact_list
     end
     
-    def show(id)
-      # TODO: Show a contact, based on ID
-      contact_list.each do |entry|
-        if entry.include?(term.downcase)
-          return entry
-        end
-      end
-    end
+    # def show(id)
+    #   # TODO: Show a contact, based on ID
+    #   contact_list.each do |entry|
+    #     if entry.include?(term.downcase)
+    #       return entry
+    #     end
+    #   end
+    # end
     
   end
  

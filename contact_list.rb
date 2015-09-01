@@ -7,17 +7,29 @@ require_relative 'contact_database'
 def main_menu
   puts "Waiting for input"
   input = gets.chomp
-  if input == "help"
-    puts "Here is a list of available commands:"
-      puts "new - Create a new contact"
-      puts "list - List all contacts"
-      puts "show - Show a contact"
-      puts "find - Find a contact" 
-      input2 = gets.chomp
-      if input2 == "new"
-        new_contact
-      end 
+  if input == ""  #removed "help"
+    prompt
+    response = gets.chomp
+    if response == "new"
+      new_contact
+    elsif response == "list"
+      list
+    elsif response == "show"
+      show
+    else
+      puts"nothing happened"
+    end
   end
+end
+
+def show
+  puts "Enter ID"
+  id = gets.chomp.to_i
+  puts ContactDatabase.show(id)
+end
+
+def list
+  # ContactDatabase.load
 end
 
 def new_contact
@@ -35,5 +47,12 @@ def get_info
   contact << email
 end
 
+def prompt
+puts "Here is a list of available commands:"
+puts "  new - Create a new contact"
+puts "  list - List all contacts"
+puts "  show - Show a contact"
+puts "  find - Find a contact" 
+end
 
 main_menu
