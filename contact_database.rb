@@ -5,7 +5,7 @@ require 'pry'
 class ContactDatabase
   def self.load
     file = File.open("contacts.csv", "r")
-    contents = file.readlines.each_with_index do |line, index|
+    file.readlines.each_with_index do |line, index|
       puts "#{index+1}: #{line}"
     end
   end

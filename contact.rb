@@ -1,10 +1,11 @@
 class Contact
  
-  attr_accessor :name, :email
+  attr_accessor :name, :email, :numbers
 
-  def initialize(name, email)
+  def initialize(name, email, numbers)
     @name = name
     @email = email
+    @numbers = numbers
   end
  
   def to_s
@@ -13,11 +14,11 @@ class Contact
  
   ## Class Methods
   class << self
-    def create(name, email)
+    def create(name, email, numbers)
       # TODO: Will initialize a contact as well as add it to the list of contacts
-      contact = Contact.new(name, email)
+      contact = Contact.new(name, email, numbers)
       index = ContactDatabase.last + 1
-      new_entry = "#{name} (#{email})"
+      new_entry = "#{name} (#{email}) #{numbers}"
       puts "ID: #{index}"
       ContactDatabase.add(new_entry)
     end
